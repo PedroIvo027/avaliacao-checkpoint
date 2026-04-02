@@ -9,7 +9,7 @@ class HeroSection extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/banner_cta.png'),
+          image: AssetImage('assets/banner.png'),
           fit: BoxFit.cover,
         ),
       ),

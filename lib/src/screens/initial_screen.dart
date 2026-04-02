@@ -51,9 +51,9 @@ class _InitialScreenState extends State<InitialScreen> {
                 final produto = produtos[index];
 
                 return ProductCardWidget(
-                  name: produto['name']!,
-                  price: produto['price']!,
-                  image: produto['image']!
+                  name: produto.name,
+                  price: produto.price,
+                  image: produto.image,
                 );
               },
             ), 
