@@ -16,7 +16,9 @@ class ProductCardWidget  extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     
-    return Container(
+    return Column(
+      children: [
+        Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(
@@ -67,10 +69,27 @@ class ProductCardWidget  extends StatelessWidget{
               ),
             ],
           ),
-          ),
-            const SizedBox(height: 10,),
-        ],
         ),
+            const SizedBox(height: 10,),
+          ],
+        ),
+      ),
+      Center(
+        child: TextButton(
+          onPressed:() {},
+           child: const Text(
+            'Ver mais',
+            style: TextStyle(
+              color: Colors.purple, 
+              fontSize: 20,
+              fontWeight: .bold,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.purple,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
