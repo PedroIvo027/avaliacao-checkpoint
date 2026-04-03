@@ -3,6 +3,7 @@ import 'package:projeto_usedev/src/widgets/hero_section_widget.dart';
 import 'package:projeto_usedev/src/widgets/product_card_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_usedev/src/data/produtos.dart';
+import 'package:projeto_usedev/src/widgets/categories_section_widget.dart';
 
 
 class InitialScreen extends StatefulWidget{
@@ -30,8 +31,28 @@ class _InitialScreenState extends State<InitialScreen> {
       body: SingleChildScrollView(
         child: Column(
           children:  [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText: 'O que você procura?',
+                  suffixIcon: Icon(Icons.search),
+                  filled: true,
+                  fillColor: Colors.grey[250],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+
             HeroSection(),
-            
+
+            const SizedBox(height: 20),
+              CategoriesSection(),           
+
             Text(
               'Promos Especiais',
               style: TextStyle(
@@ -57,7 +78,6 @@ class _InitialScreenState extends State<InitialScreen> {
                 );
               },
             ), 
-
             ],
           ),
         ),
