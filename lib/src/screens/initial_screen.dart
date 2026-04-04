@@ -21,8 +21,14 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon( Icons.menu, size:40),
-        title: Image.asset('assets/logo_usedev.png', height:40),
-        centerTitle: true,
+
+        title: const Center(
+          child: Image(         
+            image: AssetImage('assets/logo_usedev.png'),
+              height: 40,
+            ),
+        ),
+        
         actions: const [
           Icon(Icons.person_outline, size: 40),
           SizedBox(width: 10),
