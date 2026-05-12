@@ -19,20 +19,20 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: onTap,
-          child: Container(
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InkWell(
+                borderRadius: BorderRadius.circular(8),
+                onTap: onTap,
+                child: Container(
                   height: 180,
                   width: double.infinity,
                   alignment: Alignment.center,
@@ -45,50 +45,35 @@ class ProductCardWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(
-                          fontFamily: GoogleFonts.orbitron().fontFamily,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        price,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
-            ),
-          ),
-        ),
-        Center(
-          child: TextButton(
-            onPressed: onTap,
-            child: const Text(
-              'Ver mais',
-              style: TextStyle(
-                color: Colors.purple,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
-                decorationColor: Colors.purple,
               ),
-            ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.orbitron().fontFamily,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      price,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
           ),
         ),
       ],

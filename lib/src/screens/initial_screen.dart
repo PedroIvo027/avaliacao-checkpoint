@@ -92,6 +92,26 @@ class _InitialScreenState extends State<InitialScreen> {
                 );
               },
             ),
+            const SizedBox(height: 8),
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Mostrando mais produtos...')),
+                  );
+                },
+                child: const Text(
+                  'Ver mais',
+                  style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.purple,
+                  ),
+                ),
+              ),
+            ),
             const BannerWidget(),
             const FooterWidget(),
           ],
