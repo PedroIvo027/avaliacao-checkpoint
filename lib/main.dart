@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto_usedev/src/screens/initial_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:firebase_vertexai/firebase_vertexai.dart'; 
 
 Future<void> main() async {
   // Garante a comunicação com o sistema nativo antes do Firebase ligar

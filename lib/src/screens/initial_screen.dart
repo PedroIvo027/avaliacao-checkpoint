@@ -7,21 +7,7 @@ import 'package:projeto_usedev/src/data/produtos.dart';
 import 'package:projeto_usedev/src/widgets/categories_section_widget.dart';
 import 'package:projeto_usedev/src/widgets/banner_widget.dart';
 import 'package:projeto_usedev/src/widgets/footer_widget.dart';
-
-PreferredSizeWidget buildMainAppBar() {
-  return AppBar(
-    leading: const Icon(Icons.menu, size: 40),
-    title: const Center(
-      child: Image(image: AssetImage('assets/logo_usedev.png'), height: 40),
-    ),
-    actions: const [
-      Icon(Icons.person_outline, size: 40),
-      SizedBox(width: 10),
-      Icon(Icons.shopping_cart_outlined, size: 40),
-      SizedBox(width: 25),
-    ],
-  );
-}
+import 'package:projeto_usedev/src/widgets/app_bar.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -34,7 +20,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildMainAppBar(),
+      appBar: buildMainAppBar(context),
       body: SingleChildScrollView(
         child: Column(
           children: [

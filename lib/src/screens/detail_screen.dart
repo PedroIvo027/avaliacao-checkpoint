@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_usedev/src/models/produto.dart';
-import 'package:projeto_usedev/src/screens/initial_screen.dart';
+import 'package:projeto_usedev/src/data/cart.dart';
+import 'package:projeto_usedev/src/models/cart_item.dart';
+import 'package:projeto_usedev/src/widgets/app_bar.dart';
 
 class DetailScreen extends StatelessWidget {
   final Produto produto;
@@ -11,7 +13,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildMainAppBar(),
+      appBar: buildMainAppBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -77,6 +79,16 @@ class DetailScreen extends StatelessWidget {
                 height: 54,
                 child: ElevatedButton(
                   onPressed: () {
+                    // Check if item already in cart
+                    final existingItem = cart.firstWhere(
+                      (item) => item.produto.name == produto.name,
+                      orElse: () => CartItem(produto: produto, quantity: 0),
+                    );
+                    if (existingItem.quantity > 0) {
+                      existingItem.quantity++;
+                    } else {
+                      cart.add(CartItem(produto: produto));
+                    }
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('${produto.name} adicionado ao carrinho'),
