@@ -77,7 +77,7 @@ class DetailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 54,
-                child: ElevatedButton(
+                child: ElevatedButton.icon(
                   onPressed: () {
                     // Check if item already in cart
                     final existingItem = cart.firstWhere(
@@ -95,16 +95,29 @@ class DetailScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  icon: const Icon(
+                    Icons.add_shopping_cart,
+                    color: Colors.white,
+                    size: 22,
+                  ),
+
+                  label:  Text(
+                    'Adicionar ao carrinho',
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.orbitron().fontFamily,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                  child: const Text(
-                    'Adicionar ao carrinho',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple[800],
+                    foregroundColor: Colors.white,
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),              
                 ),
               ),
             ],
