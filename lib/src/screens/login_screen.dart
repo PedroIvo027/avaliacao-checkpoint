@@ -17,6 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
   bool _isAlreadyAuthenticated = false;
 
+  
+  final Color primaryColor = const Color(0xFF7C13F3);
+  final Color inputBgColor = const Color(0xFF202024);
+  final Color hintTextColor = const Color(0xFF7C7C8A);
+
   @override
   void initState() {
     super.initState();
@@ -63,9 +68,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login realizado com sucesso.')),
-      );
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -77,148 +79,173 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 80),
-              const Image(
-                image: AssetImage('assets/logo_usedev.png'),
-                height: 100,
-              ),
-              const SizedBox(height: 60),
-              Text(
-                'Login',
-                style: TextStyle(
-                  fontFamily: GoogleFonts.orbitron().fontFamily,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 40),
-              if (_isAlreadyAuthenticated)
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.green[100],
-                    border: Border.all(color: Colors.green[700]!, width: 2),
-                    borderRadius: BorderRadius.circular(12),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 40.0),
+                  
+                  const Image(
+                    image: AssetImage('assets/logo_usedev.png'),
+                    height: 100.0,
                   ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.check_circle, color: Colors.green[700], size: 28),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          'Usuário já autenticado.',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green[700],
+                  const SizedBox(height: 24.0),
+
+                  Text(
+                    'LOGIN',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.orbitron(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+                  
+                  const SizedBox(height: 32.0),
+
+                  if (_isAlreadyAuthenticated) ...[
+                    Container(
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1B3B2B),
+                        border: Border.all(color: const Color(0xFF4ADE80), width: 1.5),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.check_circle_rounded, color: Color(0xFF4ADE80), size: 26.0),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Text(
+                              'Usuário já autenticado.',
+                              style: GoogleFonts.quicksand(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFFBBF7D0),
+                              ),
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 24.0),
+                  ],
+
+                  
+                  TextField(
+                    controller: _usernameController,
+                    style: GoogleFonts.quicksand(color: Colors.black87),
+                    cursorColor: primaryColor,
+                    decoration: InputDecoration(
+                      hintText: 'Usuário',
+                      hintStyle: GoogleFonts.quicksand(color: hintTextColor),
+                      prefixIcon: Icon(Icons.person_outline_rounded, color: hintTextColor),
+                      filled: false,
+                      fillColor: inputBgColor,
+                      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0), 
+                        borderSide: BorderSide(color: primaryColor, width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+
+                  
+                  TextField(
+                    controller: _passwordController,
+                    obscureText: _obscurePassword,
+                    style: GoogleFonts.quicksand(color: Colors.black87),
+                    cursorColor: primaryColor,
+                    decoration: InputDecoration(
+                      hintText: 'Senha',
+                      hintStyle: GoogleFonts.quicksand(color: hintTextColor),
+                      prefixIcon: Icon(Icons.lock_outline_rounded, color: hintTextColor),
+                      filled: false,
+                      fillColor: inputBgColor,
+                      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide(color: primaryColor, width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                          color: hintTextColor,
+                        ),
+                        onPressed: _isAlreadyAuthenticated ? null : () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 32.0),
+
+                  
+                  ElevatedButton(
+                    onPressed: (_isLoading || _isAlreadyAuthenticated) ? null : _performLogin,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      foregroundColor: Colors.white,
+                      disabledBackgroundColor: primaryColor.withOpacity(0.4),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                      shape: const StadiumBorder(),
+                      elevation: 0.0, 
+                    ),
+                    child: _isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : Text(
+                            'ENTRAR',
+                            style: GoogleFonts.orbitron(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                  ),
+
+                  const SizedBox(height: 12.0),
+
+                  Center(
+                    child: TextButton(
+                      onPressed: _isAlreadyAuthenticated ? null : () {},
+                      child: Text(
+                        'Esqueceu a senha?',
+                        style: GoogleFonts.quicksand(
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              if (_isAlreadyAuthenticated) const SizedBox(height: 40),
-              TextField(
-                controller: _usernameController,
-                enabled: !_isAlreadyAuthenticated,
-                decoration: InputDecoration(
-                  hintText: 'Usuário',
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: _passwordController,
-                enabled: !_isAlreadyAuthenticated,
-                obscureText: _obscurePassword,
-                decoration: InputDecoration(
-                  hintText: 'Senha',
-                  filled: true,
-                  fillColor: Colors.grey[100],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    ),
-                    onPressed: _isAlreadyAuthenticated ? null : () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: _isAlreadyAuthenticated ? null : () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Redefinição de senha enviada para seu email.')),
-                    );
-                  },
-                  child: const Text(
-                    'Esqueceu a senha?',
-                    style: TextStyle(
-                      color: Colors.purple,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                height: 54,
-                child: ElevatedButton(
-                  onPressed: (_isLoading || _isAlreadyAuthenticated) ? null : _performLogin,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: _isLoading
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text(
-                          'Entrar',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                ),
-              ),
-              if (_isAlreadyAuthenticated)
-                ...[
-                  const SizedBox(height: 12),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 54,
-                    child: OutlinedButton(
+
+                  
+                  if (_isAlreadyAuthenticated) ...[
+                    const SizedBox(height: 14.0),
+                    OutlinedButton(
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(
                           context,
@@ -227,24 +254,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                       },
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Colors.purple),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        foregroundColor: primaryColor,
+                        side: BorderSide(color: primaryColor, width: 2.0), // Borda roxa exata
+                        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                        shape: const StadiumBorder(),
+                        elevation: 0.0,
                       ),
-                      child: const Text(
+                      child: Text(
                         'Ir para Início',
-                        style: TextStyle(
-                          fontSize: 18,
+                        style: GoogleFonts.quicksand(
+                          fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple,
                         ),
                       ),
                     ),
-                  ),
+                  ],
+                  const SizedBox(height: 40.0),
                 ],
-              const SizedBox(height: 80),
-            ],
+              ),
+            ),
           ),
         ),
       ),
