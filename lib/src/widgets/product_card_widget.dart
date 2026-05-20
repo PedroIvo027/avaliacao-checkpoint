@@ -64,9 +64,11 @@ class ProductCardWidget extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       price,
-                      style: const TextStyle(
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.poppins().fontFamily,
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
+                        color: const Color(0xFF6A1B9A),
                       ),
                     ),
                   ],

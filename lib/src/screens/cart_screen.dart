@@ -116,9 +116,11 @@ class _CartScreenState extends State<CartScreen> {
                                   const SizedBox(height: 5),
                                   Text(
                                     'R\$ ${item.produto.price}',
-                                    style: const TextStyle(
+                                    style: TextStyle(
+                                      fontFamily: GoogleFonts.poppins().fontFamily,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 17,
+                                      color: Colors.purple[800],
                                     ),
                                   ),
                                   const SizedBox(height: 10),
@@ -175,19 +177,29 @@ class _CartScreenState extends State<CartScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Row(
+                            children: [
+                              Icon(
+                              Icons.shopping_bag,
+                              color: Colors.purple[800],
+                              size: 24,
+                          ),
+                          const SizedBox(width: 8),                         
                           Text(
                             'Total:',
                             style: TextStyle(
-                              fontFamily: GoogleFonts.orbitron().fontFamily,
+                              fontFamily: GoogleFonts.poppins().fontFamily,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              color: Colors.purple[800],
                             ),
                           ),
+                        ],
+                      ),
                           Text(
                             'R\$ ${_calculateTotal().toStringAsFixed(2)}',
                             style: TextStyle(
-                              fontFamily: GoogleFonts.orbitron().fontFamily,
+                              fontFamily: GoogleFonts.poppins().fontFamily,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.purple[800],
@@ -231,13 +243,17 @@ class _CartScreenState extends State<CartScreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
-                          child: const Text(
+                          child: Text(
                             'Finalizar Compra',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                              fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -258,15 +274,16 @@ class _CartScreenState extends State<CartScreen> {
                           style: OutlinedButton.styleFrom(
                             side: const BorderSide(color: Colors.purple),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
-                          child: const Text(
+                          child: Text(
                             'Continuar Comprando',
                             style: TextStyle(
+                              fontFamily: GoogleFonts.poppins().fontFamily,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.purple,
+                              color: Colors.black,
                             ),
                           ),
                         ),

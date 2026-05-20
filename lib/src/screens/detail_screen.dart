@@ -67,7 +67,7 @@ class DetailScreen extends StatelessWidget {
               Text(
                 'R\$ ${produto.price}',
                 style: TextStyle(
-                  fontFamily: GoogleFonts.orbitron().fontFamily,
+                  fontFamily: GoogleFonts.poppins().fontFamily,
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.purple[800],
@@ -104,7 +104,7 @@ class DetailScreen extends StatelessWidget {
                   label:  Text(
                     'Adicionar ao carrinho',
                     style: TextStyle(
-                      fontFamily: GoogleFonts.orbitron().fontFamily,
+                      fontFamily: GoogleFonts.poppins().fontFamily,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
